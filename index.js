@@ -1,3 +1,8 @@
+refs = {
+  task1: document.querySelector('.test1'),
+  task2: document.querySelector('.test2'),
+  task3: document.querySelector('.test3'),
+};
 // ==========================================================================================================================>>>>>>
 // Напиши функцию delay(ms), которая возвращает промис, переходящий
 // в состояние "resolved" через ms миллисекунд.
@@ -13,9 +18,12 @@ const delay = ms => {
 };
 const logger1 = time => console.log(`Resolved after ${time}ms`);
 
-// console.log(delay(2000).then(logger1)); // Resolved after 2000ms
-// console.log(delay(1000).then(logger1)); // Resolved after 1000ms
-// console.log(delay(1500).then(logger1)); // Resolved after 1500ms
+refs.task1.addEventListener('click', e => {
+  console.log(delay(2000).then(logger1)); // Resolved after 2000ms
+  console.log(delay(1000).then(logger1)); // Resolved after 1000ms
+  console.log(delay(1500).then(logger1)); // Resolved after 1500ms
+});
+
 // ==========================================================================================================================>>>>>>
 
 // Перепиши функцию toggleUserState() так, чтобы она не использовала callback - функцию callback,
@@ -39,10 +47,10 @@ const toggleUserState = (allUsers, userName) => {
 };
 const logger = updatedUsers => console.table(updatedUsers);
 
-//  Должно работать так
-
-// console.log(toggleUserState(users, 'Mango').then(logger));
-// console.log(toggleUserState(users, 'Lux').then(logger));
+refs.task2.addEventListener('click', e => {
+  toggleUserState(users, 'Mango').then(logger);
+  toggleUserState(users, 'Lux').then(logger);
+});
 
 // ==========================================================================================================================>>>>>>
 
@@ -77,21 +85,21 @@ const logError = id => {
   console.warn(`Error processing transaction ${id}. Please try again later.`);
 };
 
-//   Должно работать так
-// console.log(
-//   makeTransaction({ id: 70, amount: 150 }).then(logSuccess).catch(logError),
-// );
+refs.task3.addEventListener('click', e => {
+  console.log(
+    makeTransaction({ id: 70, amount: 150 }).then(logSuccess).catch(logError),
+  );
 
-// console.log(
-//   makeTransaction({ id: 71, amount: 230 }).then(logSuccess).catch(logError),
-// );
+  console.log(
+    makeTransaction({ id: 71, amount: 230 }).then(logSuccess).catch(logError),
+  );
 
-// console.log(
-//   makeTransaction({ id: 72, amount: 75 }).then(logSuccess).catch(logError),
-// );
+  console.log(
+    makeTransaction({ id: 72, amount: 75 }).then(logSuccess).catch(logError),
+  );
 
-// console.log(
-//   makeTransaction({ id: 73, amount: 100 }).then(logSuccess).catch(logError),
-// );
-
+  console.log(
+    makeTransaction({ id: 73, amount: 100 }).then(logSuccess).catch(logError),
+  );
+});
 // ==========================================================================================================================>>>>>>
